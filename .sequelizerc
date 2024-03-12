@@ -1,0 +1,7 @@
+const {resolve} = require('path') //vai ajudar a navegar pelos sistemas independente de qual seja, seja mac windows etc etc
+
+module.exports = {
+    config: resolve(__dirname, 'src', 'config', 'database.js'), 
+    'models-path': resolve(__dirname, 'src', 'app', 'models'),
+    'migrations-path': resolve(__dirname, 'src', 'database', 'migrations')
+}
