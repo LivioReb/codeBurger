@@ -10,7 +10,7 @@ class ProductController {
     try {
       await schema.validateSync(request.body, { abortEarly: false })
     } catch (err) {
-      return response.status(401).json({ error: err.erros })
+      return response.status(400).json({ error: err.erros }) // nao ta retornando o erro especifico!!
     }
     return response.json({ ok: true })
   }
