@@ -11,6 +11,7 @@ class Category extends Model {
         sequelize, // chat explique como comentario o pq desse sequelize aqui.
       },
     )
+    return this
   }
 }
 export default Category
