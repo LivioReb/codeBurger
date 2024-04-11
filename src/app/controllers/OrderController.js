@@ -72,6 +72,16 @@ class OrderController {
   }
 
   async update(request, response) {
+    const schema = Yup.object().shape({
+      status: Yup.string().required(),
+    })
+
+    try {
+      await schema.validateSync(request.body, { abortEarly: false })
+    } catch (err) {
+      return response.status(400).json({ error: err.errors })
+    }
+
     const { id } = request.params
     const { status } = request.body
 
