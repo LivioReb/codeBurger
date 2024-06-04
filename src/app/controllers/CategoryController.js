@@ -90,5 +90,20 @@ class CategoryController {
       console.log(err)
     }
   }
+
+  async delete(request, response) {
+    const { id } = request.params
+
+    try {
+      const category = await Category.findByPk(id)
+      if (!category) {
+        return response.status(404).json({ error: 'Category not found' })
+      }
+      await category.destroy()
+      return response.status(204).json({ message: 'Category is deleted' })
+    } catch (error) {
+      return response.status(500).json({ error: 'Failed to delete category' })
+    }
+  }
 }
 export default new CategoryController()

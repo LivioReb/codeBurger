@@ -108,5 +108,20 @@ class ProductController {
       console.log(err)
     }
   }
+
+  async delete(request, response) {
+    const { id } = request.params
+
+    try {
+      const product = await Product.findByPk(id)
+      if (!product) {
+        return response.status(404).json({ error: 'Product not found' })
+      }
+      await product.destroy()
+      return response.status(204).json({ message: 'Product is deleted' })
+    } catch (error) {
+      return response.status(500).json({ error: 'Failed to delete product' })
+    }
+  }
 }
 export default new ProductController()
