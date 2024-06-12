@@ -4,14 +4,22 @@ import { resolve } from 'path'
 import cors from 'cors'
 import './database'
 
-const corsOptions ={
+const corsOptions = {
   origin: 'http://code-burger-frontend-livio-dev.vercel.app', 
-  Credential: true,
+  credentials: true,
 }
 
 class App {
   constructor() {
     this.app = express()
+    
+    // Adiciona um log para verificar as solicitações
+    this.app.use((req, res, next) => {
+      console.log(`Received request from origin: ${req.headers.origin}`)
+      next()
+    })
+
+    // Aplica as opções de CORS
     this.app.use(cors(corsOptions))
 
     this.middlewares()
@@ -35,4 +43,5 @@ class App {
     this.app.use(routes)
   }
 }
+
 export default new App().app
