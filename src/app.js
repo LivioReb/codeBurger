@@ -1,43 +1,39 @@
-import express from 'express';
-import routes from './routes.js';
-import { resolve } from 'path';
-import cors from 'cors';
-import './database';
+import express from 'express'
+import routes from './routes.js'
+import { resolve } from 'path'
+import cors from 'cors'
+import './database'
 
+const corsOptions = {
+  origin: 'https://code-burger-frontend-qsdo.vercel.app',
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
 class App {
   constructor() {
-    this.app = express();
+    this.app = express()
+    this.app.use(cors(corsOptions))
 
-    const corsOptions = {
-      origin: 'https://code-burger-frontend-qsdo.vercel.app',
-      credentials: true,
-      methods: ['GET', 'POST', 'PUT', 'DELETE'],
-      allowedHeaders: ['Content-Type', 'Authorization'],
-    };
-
-    // Aplica as opções de CORS
-    this.app.use(cors(corsOptions));
-
-    this.middlewares();
-    this.routes();
+    this.middlewares()
+    this.routes()
   }
 
   middlewares() {
-    this.app.use(express.json());
+    this.app.use(express.json())
     this.app.use(
       '/product-file',
       express.static(resolve(__dirname, '..', 'uploads')),
-    );
+    )
 
     this.app.use(
       '/category-file',
       express.static(resolve(__dirname, '..', 'uploads')),
-    );
+    )
   }
 
   routes() {
-    this.app.use(routes);
+    this.app.use(routes)
   }
 }
-
-export default new App().app;
+export default new App().app
