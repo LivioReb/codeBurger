@@ -5,15 +5,16 @@ import cors from 'cors'
 import './database'
 
 const corsOptions = {
-  origin: 'http://code-burger-frontend-qsdo.vercel.app', 
+  origin: 'http://code-burger-frontend-livio-dev.vercel.app',
   credentials: true,
+  optionsSuccessStatus: 200 // alguns navegadores antigos (IE11, vários SmartTVs) requerem isso
 }
 
 class App {
   constructor() {
     this.app = express()
     
-    // Adiciona um log para verificar as solicitações
+    // Adiciona um log para verificar as solicitações de CORS
     this.app.use((req, res, next) => {
       console.log(`Received request from origin: ${req.headers.origin}`)
       next()
