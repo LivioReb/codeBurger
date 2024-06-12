@@ -1,23 +1,21 @@
 import express from 'express'
 import routes from './routes.js'
 import { resolve } from 'path'
+import cors from 'cors'
 import './database'
 
+
+
 class App {
+
+  
   constructor() {
+    const corsOptions ={
+      origin: 'http://code-burger-frontend-livio-dev.vercel.app', 
+      credentials: true,
+    }
     this.app = express()
-    
-    // Middleware para permitir CORS para um único domínio
-    this.app.use((req, res, next) => {
-      res.setHeader('Access-Control-Allow-Origin', 'https://code-burger-frontend-qsdo.vercel.app/')
-      res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
-      res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization')
-      res.setHeader('Access-Control-Allow-Credentials', true)
-      if (req.method === 'OPTIONS') {
-        return res.sendStatus(200)
-      }
-      next()
-    })
+    this.app.use(cors(corsOptions))
 
     this.middlewares()
     this.routes()
@@ -40,5 +38,4 @@ class App {
     this.app.use(routes)
   }
 }
-
 export default new App().app
