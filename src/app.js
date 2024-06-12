@@ -4,15 +4,18 @@ import { resolve } from 'path'
 import cors from 'cors'
 import './database'
 
-const corsOptions = {
-  origin: 'https://code-burger-frontend-qsdo.vercel.app',
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-};
+
 class App {
   constructor() {
     this.app = express()
+
+    const corsOptions = {
+      origin: 'https://code-burger-frontend-qsdo.vercel.app',
+      credentials: true,
+      methods: ['GET', 'POST', 'PUT', 'DELETE'],
+      allowedHeaders: ['Content-Type', 'Authorization'],
+    };
+
     this.app.use(cors(corsOptions))
 
     this.middlewares()
