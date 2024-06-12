@@ -5,7 +5,7 @@ import cors from 'cors'
 import './database'
 
 const corsOptions = {
-  origin: 'http://code-burger-frontend-livio-dev.vercel.app', 
+  origin: 'http://code-burger-frontend-qsdo.vercel.app', 
   credentials: true,
 }
 
