@@ -6,7 +6,7 @@ import './database'
 
 const corsOptions ={
   origin: 'http://code-burger-frontend-livio-dev.vercel.app', 
-  credentials: true,
+  Credential: true,
 }
 
 class App {
