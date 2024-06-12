@@ -11,7 +11,7 @@ class App {
   
   constructor() {
     const corsOptions ={
-      origin: 'http://code-burger-frontend-livio-dev.vercel.app', 
+      origin: 'https://code-burger-frontend-qsdo.vercel.app/', 
       credentials: true,
     }
     this.app = express()
