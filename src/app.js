@@ -7,8 +7,7 @@ import './database'
 const corsOptions = {
   origin: 'https://code-burger-frontend-qsdo.vercel.app',
   credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
+  
 };
 class App {
   constructor() {
