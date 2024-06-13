@@ -10,7 +10,7 @@ class App {
     this.app = express()
 
     const corsOptions = {
-      origin: 'https://code-burger-frontend-1nix-livio-dev.vercel.app/',
+      origin: 'https://code-burger-frontend-1nix-livio-dev.vercel.app',
       credentials: true,
       methods: ['GET', 'POST', 'PUT', 'DELETE'],
       allowedHeaders: ['Content-Type', 'Authorization'],
